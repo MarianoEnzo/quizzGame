@@ -1,0 +1,24 @@
+.menu-ctn{
+    margin: 0 auto;
+    border: 1px solid red;
+    height: 70%;
+    width: 100%;
+
+}
+
+
+.options-ctn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    border: 1px solid red;
+    height: 100%;
+    width: 100%;
+
+}
+.options-ctn button{
+    width: 80%;
+    height: 40px;
+}

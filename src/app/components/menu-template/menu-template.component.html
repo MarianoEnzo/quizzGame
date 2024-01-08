@@ -1,0 +1,7 @@
+<div class="menu-ctn">
+    <div class="options-ctn" >
+        <button *ngFor="let button of settings?.buttons" (click)="button.action()" >{{button.text}}</button >
+      <!--   <button>Puntuaciones</button>
+        <button>Crea tu pregunta!</button> -->
+    </div>
+</div>
