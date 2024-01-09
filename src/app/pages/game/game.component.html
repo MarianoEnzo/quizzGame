@@ -9,9 +9,15 @@
             
         </div>
         <div class="answer-ctn">
-            <div class="answers" >
-                <div (click)="submitAnswer(option)" *ngFor="let option of currentQuestion.options" >
-                    <p >{{option}}</p>
+            <div class="answers"  >
+              
+                <button class="answer-button"   (click)="submitAnswer(option)" *ngFor="let option of currentQuestion.options , let index=index" >
+                    <p id="{{index}}">{{option.description}}</p>
+                    
+                </button>
+             
+                <div>
+                    <p ></p>
                 </div>
             
         </div>

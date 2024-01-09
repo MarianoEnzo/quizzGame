@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-game',
@@ -8,42 +8,84 @@ import { Component, OnInit } from '@angular/core';
 export class GameComponent implements OnInit {
   public questionUsed = [];
   public currentQuestion:any;
+  public selectedOption:any=null;
   public score=0;
-  constructor() {}
+  constructor(private elRef:ElementRef) {
+
+  }
  
   ngOnInit(): void {
     this.currentQuestion = this.questions[0];
   }
-
   questions = [
     {
       id: 1,
       question: 'Who was the first president of the United States?',
       options: [
-        'George Washington',
-        'Abraham Lincoln',
-        'Thomas Jefferson',
-        'Alexander Hamilton',
+        {
+          description: 'George Washington',
+          correct:true
+        },
+        {
+          description: 'Alexander Hamilton',
+          correct:false
+        },
+        {
+          description:  'Thomas Jefferson',
+          correct:false
+        },
+        {
+          description: 'Abraham Lincoln',
+          correct:false
+        }
       ],
-      answer:'George Washington'
     },
     {
       id: 2,
       question: 'What is the capital of France?',
-      options: ['Paris', 'London', 'Berlin', 'Rome'],
-      answer:'Paris'
+      options: [
+        {
+          description: 'Paris',
+          correct:true
+        },
+        {
+          description: 'London',
+          correct:false
+        },
+        {
+          description: 'Berlin',
+          correct:false
+        },
+        {
+          description: 'Rome',
+          correct:false
+        },
+      ],
     },
     {
       id: 3,
       question: 'What is the largest country in the world?',
-      options: ['Russia', 'Canada', 'China', 'USA'],
-      answer:'China'
-    },
-    {
-      id: 4,
-      question: 'What is the smallest country in the world?',
-      options: ['Vatican City', 'Monaco', 'San Marino', 'Liechtenstein'],
-      answer:'Vatican City'
+      options: [
+        {
+          description: 'Rusia',
+          correct:true
+        },
+ 
+        {
+          description: 'China',
+          correct:false
+        },
+ 
+        {
+          description: 'Canada',
+          correct:false
+        },
+ 
+        {
+          description: 'USA',
+          correct:false
+        }
+      ]
     },
   ];
 
@@ -55,9 +97,16 @@ export class GameComponent implements OnInit {
     return this.questions[0];
   }
   submitAnswer(option:any){
-    if(option == this.currentQuestion.answer){
+    const optionButton = this.elRef.nativeElement.querySelector(`${option.id}`);
+    optionButton.
+    this.selectedOption = option;
+    if(option.correct){
       this.score++;
-      return true
     }
+    setTimeout(() => {
+      this.currentQuestion = this.getNextQuestion(this.currentQuestion);
+    }, 3000);
+  
+  
   }
 }

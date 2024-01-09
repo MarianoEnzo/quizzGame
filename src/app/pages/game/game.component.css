@@ -45,3 +45,23 @@ section{
     justify-content: center;
     align-items: center;
 }
+.answer-button{
+    border: 0;
+    margin: 5px;
+    padding: 0;
+    width: 80%;
+    background-color:transparent;
+}
+.answer-button p {
+    width: 100%;
+    height: 100%;
+    background-color: red;
+}
+.correct {
+     background-color: green; 
+    color: white;
+  }
+.incorrect {
+    color: aqua;
+    background-color: red; /* Estilo para respuestas correctas */
+}
